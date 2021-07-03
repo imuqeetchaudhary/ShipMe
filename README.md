@@ -66,3 +66,17 @@ https://ship-me-restapi.herokuapp.com/
     ...body
 }
 ```
+
+### to get all companies
+
+- company/all :get
+
+### to delete a company
+
+- company/delete :post
+
+```
+{
+    companyId:
+}
+```
