@@ -27,8 +27,8 @@ exports.register = promise(async (req, res) => {
     })
     const saveUser = await newUser.save()
 
-    const user = await User.findOne({email: body.email})
-    if(!user) throw new Exceptions.NotFound("User not found")
+    const user = await User.findOne({ email: body.email })
+    if (!user) throw new Exceptions.NotFound("User not found")
 
     const newCompany = new Company({
         name: `${body.firstName} ${body.lastName}`,
@@ -65,4 +65,22 @@ exports.login = promise(async (req, res) => {
         email: user.email,
         isAdmin: user.isAdmin
     })
+})
+
+exports.editProfile = promise(async (req, res) => {
+    const body = req.body
+
+    const hash = bcrypt.hashSync(body.password, 10)
+
+    await User.updateOne(
+        { _id: req.user._id },
+        {
+            $set: {
+                ...body,
+                name: `${body.firstName} ${body.lastName}`,
+                password: hash
+            }
+        }
+    )
+    res.status(200).json({ message: "Successfully updated user" })
 })

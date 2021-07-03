@@ -6,6 +6,7 @@ const { validation } = require("../middlewares/validation")
 const { registerSchema, loginSchema } = require("../validation/user")
 
 router.get("/profile", authentication, user.profile)
+router.post("/edit", authentication, user.editProfile)
 router.post("/register", validation(registerSchema), user.register)
 router.post("/login", validation(loginSchema), user.login)
 
