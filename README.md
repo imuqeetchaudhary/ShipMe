@@ -1,4 +1,4 @@
-# Multivendor E-commerce Rest Api
+# ShipMe Rest Api
 
 ## Routes for User
 
@@ -8,7 +8,8 @@
 
 ```
 {
-    name:
+    firstName:
+    lastName:
     email:
     password:
 }
