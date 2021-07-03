@@ -33,3 +33,16 @@ https://ship-me-restapi.herokuapp.com/
 ### to view the profile of an authenticated user
 
 - user/profile :post
+
+## Routes for company
+
+### to add a new company user
+
+- company/add-user :post
+
+```
+{
+    userId:
+    isManager:
+}
+```
