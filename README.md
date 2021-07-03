@@ -1,5 +1,9 @@
 # ShipMe Rest Api
 
+## Backend live link
+
+https://ship-me-restapi.herokuapp.com/
+
 ## Routes for User
 
 ### to register a new user
