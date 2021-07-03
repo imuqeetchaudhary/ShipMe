@@ -11,7 +11,7 @@ app.use(bodyParser.json())
 app.use(cors())
 
 app.get("/", async (req, res) => {
-    res.json({ message: "Multivendor E-commerce Rest Api" })
+    res.json({ message: "ShipMe Rest Api" })
 })
 
 app.use("/user", user)
