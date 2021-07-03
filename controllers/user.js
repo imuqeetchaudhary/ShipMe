@@ -1,4 +1,5 @@
 const { User } = require("../db/models/user")
+const { Company, CompanyUser } = require("../db/models/company")
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
 const Exceptions = require("../utils/custom-exceptions")
@@ -24,10 +25,27 @@ exports.register = promise(async (req, res) => {
         name: `${body.firstName} ${body.lastName}`,
         password: hash
     })
-
     const saveUser = await newUser.save()
+
+    const user = await User.findOne({email: body.email})
+    if(!user) throw new Exceptions.NotFound("User not found")
+
+    const newCompany = new Company({
+        name: `${body.firstName} ${body.lastName}`
+    })
+
+    const newCompanyUser = new CompanyUser({
+        userId: user._id,
+        isManager: true
+    })
+
+    const saveCompany = await newCompany.save()
+    console.log("Successfully added a new company");
+    const saveCompanyUser = await newCompanyUser.save()
+    console.log("Successfully added a new company user");
+
     res.status(200).json({
-        message: "Successfully register a new user",
+        message: "Successfully register a new user and his company",
         user: newUser
     })
 })
