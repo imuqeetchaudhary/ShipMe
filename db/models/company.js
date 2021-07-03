@@ -5,6 +5,10 @@ const companySchema = new schema({
     name: {
         type: String,
         require: true
+    },
+    manager: {
+        type: schema.Types.ObjectId,
+        require: true
     }
 })
 
