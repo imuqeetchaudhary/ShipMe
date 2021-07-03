@@ -10,3 +10,15 @@ exports.addCompanyUser = promise(async (req, res) => {
     await newCompanyUser.save()
     res.status(200).json({ message: "Successfully saved new company user" })
 })
+
+exports.editCompany = promise(async (req, res) => {
+    await Company.updateOne(
+        { manager: req.user._id },
+        {
+            $set: {
+                ...req.body
+            }
+        }
+    )
+    res.status(200).json({ message: "Successfully updated company profile"})
+})

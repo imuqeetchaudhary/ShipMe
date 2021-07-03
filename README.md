@@ -56,3 +56,13 @@ https://ship-me-restapi.herokuapp.com/
     isManager:
 }
 ```
+
+### to edit a company profile
+
+- company/edit :post
+
+```
+{
+    ...body
+}
+```
