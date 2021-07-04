@@ -10,8 +10,8 @@ exports.addCompanyUser = promise(async (req, res) => {
     const company = await Company.findOne({ _id: body.companyId })
     if (!company) throw new Exceptions.NotFound("Company not found")
 
-    const user = await User.findOne({_id: body.userId})
-    if(!user) throw new Exceptions.NotFound("User not found")
+    const user = await User.findOne({ _id: body.userId })
+    if (!user) throw new Exceptions.NotFound("User not found")
 
     const email = user.email
     const message = `You are invited as a company user in ${company.name} company`
@@ -45,8 +45,8 @@ exports.allCompanies = promise(async (req, res) => {
 
 exports.allUserCompanies = promise(async (req, res) => {
     const body = req.body
-    
-    const company = await Company.find({manager: body.userId})
+
+    const company = await Company.find({ manager: body.userId })
     if (!company) throw new Exceptions.NotFound("No company found")
 
     res.status(200).json({ companies: company })
@@ -67,4 +67,13 @@ exports.deleteCompany = promise(async (req, res) => {
     else {
         res.status(400).json({ message: "Bad Request! Only super admin can delete a company" })
     }
+})
+
+exports.createCompany = promise(async (req, res) => {
+    const newCompany = new Company({
+        ...req.body,
+        manager: req.user._id
+    })
+    await newCompany.save()
+    res.status(200).json({ message: "Successfully added a new company" })
 })

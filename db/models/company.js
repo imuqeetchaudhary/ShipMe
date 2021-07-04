@@ -9,6 +9,39 @@ const companySchema = new schema({
     manager: {
         type: schema.Types.ObjectId,
         require: true
+    },
+    address: {
+        type: String,
+
+    },
+    city: {
+        type: String,
+
+    },
+    zipCode: {
+        type: Number,
+
+    },
+    email: {
+        type: String,
+
+    },
+    website: {
+        type: String,
+
+    },
+    number: {
+        type: Number,
+
+    },
+    primaryContactName: {
+        type: String,
+    },
+    primaryContactNumber: {
+        type: Number,
+    },
+    primaryContactJobTitle: {
+        type: String,
     }
 })
 
