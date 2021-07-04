@@ -77,3 +77,26 @@ exports.createCompany = promise(async (req, res) => {
     await newCompany.save()
     res.status(200).json({ message: "Successfully added a new company" })
 })
+
+exports.editCompanyUser = promise(async (req, res) => {
+    const body = req.body
+    await CompanyUser.updateOne(
+        {
+            userId: body.userId,
+            companyId: body.companyId
+        },
+        {
+            $set: {
+                ...req.body
+            }
+        }
+    )
+    res.status(200).json({ message: "Successfully updated company user profile" })
+})
+
+exports.allCompanyUsers = promise(async (req, res) => {
+    const companyUser = await CompanyUser.find({companyId: req.body.companyId})
+    if (!companyUser) throw new Exceptions.NotFound("No company found")
+
+    res.status(200).json({ companyUsers: companyUser })
+})

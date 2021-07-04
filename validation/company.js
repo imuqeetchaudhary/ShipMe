@@ -26,3 +26,12 @@ exports.createCompanySchema = yup.object({
     primaryContactNumber: yup.number().required(),
     primaryContactJobTitle: yup.string().required()
 })
+
+exports.allCompanyUsersSchema = yup.object({
+    companyId: yup.string().required()
+})
+
+exports.editCompanyUserSchema = yup.object({
+    companyId: yup.string().required(),
+    userId: yup.string().required()
+})
