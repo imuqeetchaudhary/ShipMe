@@ -1,6 +1,7 @@
 const yup = require("yup")
 
 exports.addUserSchema = yup.object({
+    companyId: yup.string().required(),
     userId: yup.string().required(),
     isManager: yup.boolean().required()
 })

@@ -13,6 +13,10 @@ const companySchema = new schema({
 })
 
 const companyUserSchema = new schema({
+    companyId: {
+        type: schema.Types.ObjectId,
+        require: true
+    },
     userId: {
         type: schema.Types.ObjectId,
         require: true

@@ -2,14 +2,26 @@ const { Company, CompanyUser } = require("../db/models/company")
 const { User } = require("../db/models/user")
 const Exceptions = require("../utils/custom-exceptions")
 const { promise } = require("../middlewares/promises")
+const { sendMail } = require("../middlewares/sendMail")
 
 exports.addCompanyUser = promise(async (req, res) => {
     const body = req.body
+
+    const company = await Company.findOne({ _id: body.companyId })
+    if (!company) throw new Exceptions.NotFound("Company not found")
+
+    const user = await User.findOne({_id: body.userId})
+    if(!user) throw new Exceptions.NotFound("User not found")
+
+    const email = user.email
+    const message = `You are invited as a company user in ${company.name} company`
+
     const newCompanyUser = new CompanyUser({
         ...body
     })
+
     await newCompanyUser.save()
-    res.status(200).json({ message: "Successfully saved new company user" })
+    sendMail(email, message, res)
 })
 
 exports.editCompany = promise(async (req, res) => {
