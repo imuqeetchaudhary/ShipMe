@@ -43,6 +43,15 @@ exports.allCompanies = promise(async (req, res) => {
     res.status(200).json({ companies: company })
 })
 
+exports.allUserCompanies = promise(async (req, res) => {
+    const body = req.body
+    
+    const company = await Company.find({manager: body.userId})
+    if (!company) throw new Exceptions.NotFound("No company found")
+
+    res.status(200).json({ companies: company })
+})
+
 exports.deleteCompany = promise(async (req, res) => {
     const body = req.body
 

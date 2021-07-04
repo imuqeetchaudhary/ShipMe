@@ -81,3 +81,13 @@ https://ship-me-restapi.herokuapp.com/
     companyId:
 }
 ```
+
+### to get companies of a single user
+
+- company/all-user-companies :post
+
+```
+{
+    userId:
+}
+```

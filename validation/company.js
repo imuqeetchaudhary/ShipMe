@@ -9,3 +9,7 @@ exports.addUserSchema = yup.object({
 exports.deleteCompanySchema = yup.object({
     companyId: yup.string().required()
 })
+
+exports.getUserCompanySchema = yup.object({
+    userId: yup.string().required()
+})
