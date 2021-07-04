@@ -52,6 +52,7 @@ https://ship-me-restapi.herokuapp.com/
 
 ```
 {
+    companyId:
     userId:
     isManager:
 }
