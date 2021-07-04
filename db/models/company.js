@@ -42,6 +42,9 @@ const companySchema = new schema({
     },
     primaryContactJobTitle: {
         type: String,
+    },
+    logo: {
+        type: String
     }
 })
 

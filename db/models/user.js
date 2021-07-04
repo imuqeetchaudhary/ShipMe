@@ -24,7 +24,9 @@ const userSchema = new schema({
     number: {
         type: Number
     },
-
+    image: {
+        type: String
+    }
 })
 
 exports.User = mongoose.model("User", userSchema)
