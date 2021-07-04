@@ -93,3 +93,24 @@ https://ship-me-restapi.herokuapp.com/
     userId:
 }
 ```
+
+### to get all company users
+
+- company/all-company-users :post
+
+```
+{
+    companyId:
+}
+```
+
+### to edit any company users
+
+- company/edit-company-user :post
+
+```
+{
+    companyId:
+    userId:
+}
+```
