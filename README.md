@@ -16,6 +16,8 @@ https://ship-me-restapi.herokuapp.com/
     lastName:
     email:
     password:
+    jobTitle:
+    number:
 }
 ```
 

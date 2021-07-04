@@ -17,7 +17,14 @@ const userSchema = new schema({
     isAdmin: {
         type: Boolean,
         default: false
-    }
+    },
+    jobTitle: {
+        type: String
+    },
+    number: {
+        type: Number
+    },
+
 })
 
 exports.User = mongoose.model("User", userSchema)

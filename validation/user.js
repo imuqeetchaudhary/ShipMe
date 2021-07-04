@@ -10,7 +10,9 @@ exports.registerSchema = yup.object({
         .matches(
             /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
             "Password Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character"
-        )
+        ),
+    jobTitle: yup.string().required(),
+    number: yup.number().required(),
 })
 
 exports.loginSchema = yup.object({
